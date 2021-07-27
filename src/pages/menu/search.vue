@@ -50,12 +50,13 @@
     >
       <span
         slot="content"
-        v-if="searchType == 'pic'"
+        v-if="searchType == 'pic' || record.type == 'pic'"
         slot-scope="text, record"
         @click="showPreview(record.content)"
       >
         <a href="#">点击预览</a></span
       >
+    
       <span slot="content" v-else slot-scope="text, record">
         {{ record.content }}</span
       >
@@ -207,7 +208,7 @@ export default {
     },
     // 查看
     showDrawer(e) {
-      if (this.searchType === "pic") {
+      if (this.searchType === "pic" || e.type == 'pic') {
         this.previewImg = e.content;
         this.isPreview = true;
       } else {
